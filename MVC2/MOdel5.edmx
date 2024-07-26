@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MVCModel3.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin_Reg">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="AdName" Type="varchar" MaxLength="50" />
+          <Property Name="AdAddress" Type="varchar" MaxLength="250" />
+          <Property Name="AdPhone" Type="varchar" MaxLength="50" />
+          <Property Name="AdEmail" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="student">
+          <Key>
+            <PropertyRef Name="Sid" />
+          </Key>
+          <Property Name="Sid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sname" Type="varchar" MaxLength="50" />
+          <Property Name="Sage" Type="int" />
+          <Property Name="Saddress" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="User_Reg">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Address" Type="varchar" MaxLength="150" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Photo" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <Function Name="sp_adminReg" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="aid" Type="int" Mode="In" />
+          <Parameter Name="ana" Type="varchar" Mode="In" />
+          <Parameter Name="aaddr" Type="varchar" Mode="In" />
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+          <Parameter Name="aemail" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_DBinsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="na" Type="varchar" Mode="In" />
+          <Parameter Name="ag" Type="int" Mode="In" />
+          <Parameter Name="addr" Type="varchar" Mode="In" />
+          <Parameter Name="una" Type="varchar" Mode="In" />
+          <Parameter Name="em" Type="varchar" Mode="In" />
+          <Parameter Name="gen" Type="varchar" Mode="In" />
+          <Parameter Name="state" Type="varchar" Mode="In" />
+          <Parameter Name="qual" Type="varchar" Mode="In" />
+          <Parameter Name="pw" Type="varchar" Mode="In" />
+          <Parameter Name="ph" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_login_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="rid" Type="int" Mode="In" />
+          <Parameter Name="una" Type="varchar" Mode="In" />
+          <Parameter Name="pw" Type="varchar" Mode="In" />
+          <Parameter Name="utype" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_maxIdLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_stinsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sna" Type="varchar" Mode="In" />
+          <Parameter Name="sag" Type="int" Mode="In" />
+          <Parameter Name="saddr" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="MVCModel3StoreContainer">
+          <EntitySet Name="Admin_Reg" EntityType="Self.Admin_Reg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="student" EntityType="Self.student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Reg" EntityType="Self.User_Reg" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MVCModel3" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin_Reg">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="AdName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="AdPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdEmail" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Login_Tab">
+          <Key>
+            <PropertyRef Name="Log_Id" />
+          </Key>
+          <Property Name="Log_Id" Type="Int32" Nullable="false" />
+          <Property Name="Reg_Id" Type="Int32" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="student">
+          <Key>
+            <PropertyRef Name="Sid" />
+          </Key>
+          <Property Name="Sid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sage" Type="Int32" />
+          <Property Name="Saddress" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User_Reg">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="MVCEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admin_Reg" EntityType="Self.Admin_Reg" />
+          <EntitySet Name="Login_Tab" EntityType="Self.Login_Tab" />
+          <EntitySet Name="students" EntityType="Self.student" />
+          <EntitySet Name="User_Reg" EntityType="Self.User_Reg" />
+          <FunctionImport Name="sp_adminReg">
+            <Parameter Name="aid" Mode="In" Type="Int32" />
+            <Parameter Name="ana" Mode="In" Type="String" />
+            <Parameter Name="aaddr" Mode="In" Type="String" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="aemail" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_DBinsert">
+            <Parameter Name="na" Mode="In" Type="String" />
+            <Parameter Name="ag" Mode="In" Type="Int32" />
+            <Parameter Name="addr" Mode="In" Type="String" />
+            <Parameter Name="una" Mode="In" Type="String" />
+            <Parameter Name="em" Mode="In" Type="String" />
+            <Parameter Name="gen" Mode="In" Type="String" />
+            <Parameter Name="state" Mode="In" Type="String" />
+            <Parameter Name="qual" Mode="In" Type="String" />
+            <Parameter Name="pw" Mode="In" Type="String" />
+            <Parameter Name="ph" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_maxIdLogin" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="sp_stinsert">
+            <Parameter Name="sna" Mode="In" Type="String" />
+            <Parameter Name="sag" Mode="In" Type="Int32" />
+            <Parameter Name="saddr" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_login_insert">
+            <Parameter Name="rid" Mode="In" Type="Int32" />
+            <Parameter Name="una" Mode="In" Type="String" />
+            <Parameter Name="pw" Mode="In" Type="String" />
+            <Parameter Name="utype" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MVCModel3StoreContainer" CdmEntityContainer="MVCEntities3">
+          <EntitySetMapping Name="Admin_Reg">
+            <EntityTypeMapping TypeName="MVCModel3.Admin_Reg">
+              <MappingFragment StoreEntitySet="Admin_Reg">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AdName" ColumnName="AdName" />
+                <ScalarProperty Name="AdAddress" ColumnName="AdAddress" />
+                <ScalarProperty Name="AdPhone" ColumnName="AdPhone" />
+                <ScalarProperty Name="AdEmail" ColumnName="AdEmail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="students">
+            <EntityTypeMapping TypeName="MVCModel3.student">
+              <MappingFragment StoreEntitySet="student">
+                <ScalarProperty Name="Sid" ColumnName="Sid" />
+                <ScalarProperty Name="Sname" ColumnName="Sname" />
+                <ScalarProperty Name="Sage" ColumnName="Sage" />
+                <ScalarProperty Name="Saddress" ColumnName="Saddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Reg">
+            <EntityTypeMapping TypeName="MVCModel3.User_Reg">
+              <MappingFragment StoreEntitySet="User_Reg">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_adminReg" FunctionName="MVCModel3.Store.sp_adminReg" />
+          <FunctionImportMapping FunctionImportName="sp_DBinsert" FunctionName="MVCModel3.Store.sp_DBinsert" />
+          <FunctionImportMapping FunctionImportName="sp_maxIdLogin" FunctionName="MVCModel3.Store.sp_maxIdLogin" />
+          <FunctionImportMapping FunctionImportName="sp_stinsert" FunctionName="MVCModel3.Store.sp_stinsert" />
+          <FunctionImportMapping FunctionImportName="sp_login_insert" FunctionName="MVCModel3.Store.sp_login_insert" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

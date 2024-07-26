@@ -1,0 +1,76 @@
+﻿@model MVC2.Models.AdminInsertcs
+@{
+    ViewBag.Title = "Insertadmin_Pageload";
+
+}
+
+<h2>Insertadmin_Pageload</h2>
+
+@using (Html.BeginForm("Insertadmin_click", "AdminReg", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div>
+        <label>Name:</label>
+    </div>
+
+    <div>
+        @Html.TextBoxFor(m => m.name)
+        @Html.ValidationMessageFor(m => m.name)
+    </div>
+
+
+    <div>
+        <label>Address:</label>
+    </div>
+    <div>
+        @Html.TextAreaFor(m => m.address)
+        @Html.ValidationMessageFor(m => m.address)
+    </div>
+
+    <div>
+        <label>Phone:</label>
+    </div>
+    <div>
+        @Html.TextAreaFor(m => m.phone)
+        @Html.ValidationMessageFor(m => m.phone)
+    </div>
+
+    <div>
+        <label>Email:</label>
+    </div>
+    <div>
+        @Html.TextAreaFor(m => m.email)
+        @Html.ValidationMessageFor(m => m.email)
+    </div>
+
+    <div>
+        <label>Username:</label>
+    </div>
+
+    <div>
+        @Html.TextAreaFor(m => m.username)
+        
+    </div>
+
+    <div>
+        <label>Pass:</label>
+    </div>
+    <div>
+        @Html.PasswordFor(m => m.pass)
+
+    </div>
+
+    <div>
+        @Html.PasswordFor(m => m.cpass)
+
+    </div>
+
+
+    <div>
+        <input type="submit" value="Insert" />
+        @Html.DisplayFor(m => m.msg)
+
+    </div>
+
+
+
+}
